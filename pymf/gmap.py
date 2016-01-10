@@ -107,7 +107,7 @@ class GMAP(AA):
                 kmeans_mdl.factorize(niter=10)
 
                 # get largest cluster
-                h = np.histogram(kmeans_mdl.assigned, range(self._robust_cluster+1))[0]
+                h = np.histogram(kmeans_mdl.assigned, list(range(self._robust_cluster+1)))[0]
                 largest_cluster = np.argmax(h)
                 sel = pdist(kmeans_mdl.W[:, largest_cluster:largest_cluster+1], d_sub)
                 sel = k[np.argmin(sel)]

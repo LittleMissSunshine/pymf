@@ -62,8 +62,8 @@ class CUR(SVD):
         # select all data samples for computing the error:
         # note that this might take very long, adjust self._rset and self._cset
         # for faster computations.
-        self._rset = range(self._rows)
-        self._cset = range(self._cols)
+        self._rset = list(range(self._rows))
+        self._cset = list(range(self._cols))
 
 
     def sample(self, s, probs):

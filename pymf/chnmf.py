@@ -159,7 +159,7 @@ class CHNMF(AA):
             idx = np.array([])
 
             # iterate over some pairwise combinations of dimensions
-            for i in combinations(range(n), 2):
+            for i in combinations(list(range(n)), 2):
                 # sample convex hull points in 2D projection
                 convex_hull_d = quickhull(data[i, :].T)
 

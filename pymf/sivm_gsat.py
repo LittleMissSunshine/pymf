@@ -76,7 +76,7 @@ class SIVM_GSAT(SIVM):
     """
 
     def init_w(self):
-        self.select = range(self._num_bases)
+        self.select = list(range(self._num_bases))
         self.W = self.data[:, self.select]
 
     def online_update_w(self, vec):
@@ -95,7 +95,7 @@ class SIVM_GSAT(SIVM):
 
         for i in range(self._num_bases):
                 # compute volume for each combination...
-                s = np.setdiff1d(range(self._num_bases + 1), [i])
+                s = np.setdiff1d(list(range(self._num_bases + 1)), [i])
                 v[i] = cmdet((self.D[s,:])[:,s])
 
         # select index that maximizes the volume
@@ -165,7 +165,7 @@ class SIVM_GSAT(SIVM):
         if compute_err:
             self.ferr = np.zeros(niter)
 
-        for i in xrange(niter):
+        for i in range(niter):
             if compute_w:
                 self.update_w()
 

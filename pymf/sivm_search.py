@@ -127,8 +127,8 @@ class SIVM_SEARCH(SIVM):
                 hkey = tuple(tmp_sel)
 
                 if len(tmp_sel) > len(next_sel) and (
-                    not Closedset.has_key(hkey)) and (
-                    not Openset.has_key(hkey)):
+                    hkey not in Closedset) and (
+                    hkey not in Openset):
 
                     # compute volume for temp selection
                     d = h(tmp_sel, D, self._num_bases)
@@ -139,7 +139,7 @@ class SIVM_SEARCH(SIVM):
 
             # get next best tuple
             vmax = 0.0
-            for (k,v) in Openset.iteritems():
+            for (k,v) in Openset.items():
                 if v > vmax:
                     next_sel = k
                     vmax = v

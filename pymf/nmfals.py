@@ -79,7 +79,7 @@ class NMFALS(NMF):
         INQa = base.matrix(-np.eye(self._num_bases))
         INQb = base.matrix(0.0, (self._num_bases,1))
 
-        map(updatesingleH, xrange(self._num_samples))
+        list(map(updatesingleH, range(self._num_samples)))
 
 
     def update_w(self):
@@ -94,4 +94,4 @@ class NMFALS(NMF):
         INQa = base.matrix(-np.eye(self._num_bases))
         INQb = base.matrix(0.0, (self._num_bases,1))
 
-        map(updatesingleW, xrange(self._data_dimension))
+        list(map(updatesingleW, range(self._data_dimension)))

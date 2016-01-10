@@ -89,13 +89,13 @@ class CNMF(NMF):
             for i in range(self._num_bases):
                 num_i[i] = len(np.where(assign == i)[0])
 
-            self.H.T[range(len(assign)), assign] = 1.0
+            self.H.T[list(range(len(assign))), assign] = 1.0
             self.H += 0.2*np.ones((self._num_bases, self._num_samples))
 
         if not hasattr(self, 'G'):
             self.G = np.zeros((self._num_samples, self._num_bases))
 
-            self.G[range(len(assign)), assign] = 1.0
+            self.G[list(range(len(assign))), assign] = 1.0
             self.G += 0.01
             self.G /= np.tile(np.reshape(num_i[assign],(-1,1)), self.G.shape[1])
 
@@ -154,7 +154,7 @@ class CNMF(NMF):
         self.ferr = np.zeros(niter)
         # iterate over W and H
 
-        for i in xrange(niter):
+        for i in range(niter):
             # update H
             XtX_neg_x_W = np.dot(XtX_neg, self.G)
             XtX_pos_x_W = np.dot(XtX_pos, self.G)
